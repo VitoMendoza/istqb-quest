@@ -3,7 +3,7 @@
 
 Aprende el syllabus **ISTQB Certified Tester Foundation Level (CTFL) v4.0** con lecciones cortas al estilo Duolingo. Las preguntas están en inglés, igual que el examen oficial.
 
-👉 **Demo:** https://TU-USUARIO.github.io/istqb-quest/
+👉 **Demo:** [https://TU-USUARIO.github.io/istqb-quest/](https://vitomendoza.github.io/istqb-quest/)
 
 ## Características
 
