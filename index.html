@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ISTQB Quest by Vito Mendoza</title>
+<style>
+:root{--bg:#fff;--fg:#1f2937;--card:#f3f4f6;--bd:#d1d5db;--mut:#6b7280;--acc:#58a700;--accd:#3f7d00;--ok:#d7f7c0;--okf:#2b6b00;--bad:#ffdfe0;--badf:#b42318;--lock:#e5e7eb;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#131f24;--fg:#f1f5f9;--card:#1f2e35;--bd:#37464f;--mut:#9ca3af;--acc:#58cc02;--accd:#3f9300;--ok:#1e3d12;--okf:#9be26a;--bad:#42191c;--badf:#ff8a8a;--lock:#2b3a42}}
+:root[data-theme="dark"]{--bg:#131f24;--fg:#f1f5f9;--card:#1f2e35;--bd:#37464f;--mut:#9ca3af;--acc:#58cc02;--accd:#3f9300;--ok:#1e3d12;--okf:#9be26a;--bad:#42191c;--badf:#ff8a8a;--lock:#2b3a42}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+#app{max-width:520px;margin:0 auto;min-height:100vh;padding:0 16px 24px;display:flex;flex-direction:column}
+.top{display:flex;justify-content:space-between;align-items:center;padding:14px 0;font-weight:700;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5}
+.stat{display:flex;gap:14px}
+h1{font-size:20px;margin:4px 0 2px}.sub{color:var(--mut);font-size:14px;margin:0 0 14px}
+.unit{display:flex;align-items:center;gap:14px;background:var(--card);border:2px solid var(--bd);border-radius:18px;padding:14px;margin:0 0 12px;width:100%;text-align:left;color:inherit;font:inherit;cursor:pointer}
+.unit .ic{width:56px;height:56px;border-radius:50%;background:var(--acc);box-shadow:0 5px 0 var(--accd);display:grid;place-items:center;font-size:26px;flex:none}
+.unit.lock{opacity:.55;cursor:not-allowed}.unit.lock .ic{background:var(--lock);box-shadow:0 5px 0 var(--bd)}
+.unit b{display:block;font-size:16px}.unit small{color:var(--mut)}
+.btn{background:var(--acc);color:#fff;border:0;border-radius:14px;padding:14px;font-size:16px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;box-shadow:0 4px 0 var(--accd);width:100%;cursor:pointer}
+.btn:disabled{background:var(--lock);color:var(--mut);box-shadow:none;cursor:default}
+.btn.ghost{background:transparent;color:var(--acc);box-shadow:none;border:2px solid var(--bd)}
+.bar{flex:1;height:14px;background:var(--lock);border-radius:9px;overflow:hidden;margin:0 12px}
+.bar i{display:block;height:100%;background:var(--acc);border-radius:9px;transition:width .3s}
+.lt{display:flex;align-items:center;padding:14px 0}.x{background:none;border:0;color:var(--mut);font-size:22px;cursor:pointer}
+.q{font-size:20px;font-weight:700;margin:18px 0}
+.opt{display:block;width:100%;text-align:left;background:var(--card);border:2px solid var(--bd);border-radius:14px;padding:14px;margin:0 0 10px;font:inherit;color:inherit;cursor:pointer}
+.opt.sel{border-color:var(--acc);background:var(--ok)}.opt.ok{border-color:var(--okf);background:var(--ok)}.opt.bad{border-color:var(--badf);background:var(--bad)}
+.fb{margin-top:auto;border-radius:16px;padding:14px;margin-bottom:12px;font-size:15px}
+.fb.ok{background:var(--ok);color:var(--okf)}.fb.bad{background:var(--bad);color:var(--badf)}
+.end{text-align:center;margin:auto 0}.end .big{font-size:64px}.end p{color:var(--mut)}
+.sp{flex:1}
+</style></head>
+<body><div id="app"></div>
+<script>
+const U=[
+{t:"Fundamentals of Testing",i:"🧪",qs:[
+{q:"Which is a typical objective of testing?",o:["Proving the software has no defects","Evaluating work products and reducing the level of quality risk","Replacing code reviews","Guaranteeing 100% coverage"],a:1,e:"Testing reduces risk and provides information; it never proves the absence of defects."},
+{q:"Testing can prove that software has no defects.",tf:false,e:"Testing can show the presence of defects, but cannot prove their absence."},
+{q:"Which sequence is correct?",o:["Failure → Defect → Error","Defect → Error → Failure","Error → Defect → Failure","Failure → Error → Defect"],a:2,e:"A person makes an error, which introduces a defect, which may cause a failure."},
+{q:"Re-running the same tests stops finding new defects. Which principle is this?",o:["Pesticide paradox","Defects cluster together","Absence-of-defects fallacy","Exhaustive testing is impossible"],a:0,e:"Tests must be reviewed and updated to stay effective."},
+{q:"Testing and debugging are the same activity.",tf:false,e:"Testing finds failures; debugging finds and fixes the defects causing them."},
+{q:"Which activity finds and fixes the cause of a failure?",o:["Testing","Debugging","Reviewing","Test planning"],a:1,e:"Debugging locates the defect and removes it."}]},
+{t:"Testing Throughout the SDLC",i:"🔄",qs:[
+{q:"Which test level focuses on interactions between components?",o:["Component testing","Integration testing","Acceptance testing","Maintenance testing"],a:1,e:"Integration testing verifies interfaces and interactions."},
+{q:"Confirmation testing checks that a fixed defect no longer fails.",tf:true,e:"Confirmation testing re-tests the failed test cases after the fix."},
+{q:"Regression testing is performed to…",o:["Confirm a defect was fixed","Detect unintended side effects after a change","Measure performance","Validate business requirements"],a:1,e:"Regression testing looks for adverse side effects of changes."},
+{q:"What does “shift-left” mean?",o:["Testing only at the end","Testing as early as possible in the SDLC","Automating all tests","Replacing development"],a:1,e:"The earlier a defect is found, the cheaper it is to fix."},
+{q:"Maintenance testing can be triggered by modification, migration or retirement of a system.",tf:true,e:"Maintenance testing is triggered by changes to a live system."},
+{q:"Who typically performs user acceptance testing (UAT)?",o:["Only developers","Users or customers","The compiler","Nobody"],a:1,e:"UAT validates that the system meets user needs."}]},
+{t:"Static Testing",i:"🔍",qs:[
+{q:"Does static testing require executing the code?",o:["Yes, always","No","Only in integration","Only if automated"],a:1,e:"Static testing examines work products without executing them."},
+{q:"Static analysis can find defects without executing the code.",tf:true,e:"Tools analyze code or models, e.g. unreachable code or undeclared variables."},
+{q:"Which is the most formal review type?",o:["Informal review","Walkthrough","Technical review","Inspection"],a:3,e:"Inspection follows a defined process with roles and metrics."},
+{q:"Which defect is static testing best at finding?",o:["Performance bottlenecks","Contradictory requirements","Memory leaks at runtime","Network failures"],a:1,e:"Static testing finds defects in requirements, design and code early."},
+{q:"Static and dynamic testing find exactly the same types of defects.",tf:false,e:"They are complementary: each finds different kinds of defects."},
+{q:"Which review role records the findings?",o:["Moderator","Author","Scribe","Reviewer"],a:2,e:"The scribe (recorder) documents anomalies and decisions."}]},
+{t:"Test Analysis and Design",i:"📐",qs:[
+{q:"Equivalence partitioning divides data into groups that…",o:["Are expected to be treated the same way","Are random","Contain only errors","Run in parallel"],a:0,e:"One representative value per partition is enough."},
+{q:"In equivalence partitioning, one value per partition is enough to cover it.",tf:true,e:"All values in a partition are expected to behave alike."},
+{q:"A field accepts 1 to 100. Which are the 2-value boundary values?",o:["1, 50, 100","0, 1, 100, 101","0, 100","1, 2, 99, 100"],a:1,e:"Each boundary plus its closest neighbor in the adjacent partition."},
+{q:"Statement coverage measures…",o:["% of requirements tested","% of statements executed by the tests","Number of defects","Execution time"],a:1,e:"It is a white-box technique based on code structure."},
+{q:"100% statement coverage guarantees all decision outcomes were exercised.",tf:false,e:"Branch coverage is stronger; it subsumes statement coverage."},
+{q:"Which is an experience-based technique?",o:["Boundary value analysis","Decision table","Error guessing","Branch coverage"],a:2,e:"Error guessing uses the tester’s knowledge of typical defects."}]},
+{t:"Managing the Test Activities",i:"📋",qs:[
+{q:"“The supplier delivers late” is a…",o:["Product risk","Project risk","Security risk","Non-risk"],a:1,e:"Project risks affect schedule, resources and management."},
+{q:"A product risk is the possibility that a work product may fail to satisfy user needs.",tf:true,e:"Product risks relate to the quality of the product itself."},
+{q:"Exit criteria define…",o:["When to start testing","When a test activity can be considered complete","Who tests","Which tool to use"],a:1,e:"Example: 95% of tests executed and no open critical defects."},
+{q:"Entry criteria define when a test activity can be considered complete.",tf:false,e:"Entry criteria define when to start; exit criteria define when to stop."},
+{q:"A good defect report includes…",o:["Only a title","Description, steps to reproduce, expected and actual results","Who to blame","Only screenshots"],a:1,e:"It must let others reproduce and understand the problem."},
+{q:"The test automation pyramid recommends…",o:["More UI tests","More tests at the lower levels (unit)","Only manual tests","No unit tests"],a:1,e:"Lower-level tests are faster, cheaper and more stable."}]},
+{t:"Test Tools",i:"🛠️",qs:[
+{q:"A benefit of test automation is…",o:["Faster, repeatable execution","Zero maintenance","Eliminating manual testing","Always lower cost"],a:0,e:"Great for regression, but needs maintenance."},
+{q:"Test automation eliminates the need for test maintenance.",tf:false,e:"Automated tests must be maintained as the product changes."},
+{q:"Which is a risk of using test tools?",o:["Unrealistic expectations","More coverage","Fewer defects","Better traceability"],a:0,e:"Underestimating effort and training is a common risk."},
+{q:"A test management tool is used to…",o:["Compile code","Manage test cases, executions and traceability","Design databases","Monitor servers"],a:1,e:"It centralizes tests, results and links to requirements."},
+{q:"Test execution tools can help run regression tests more efficiently.",tf:true,e:"Automated regression suites run quickly and repeatedly."},
+{q:"Continuous integration (CI) helps by running…",o:["Automated tests on every code change","Manual reviews","Yearly audits","Only UAT"],a:0,e:"It gives fast feedback on every commit."}]}
+];
+const AN=q=>q.tf!==undefined?(q.tf?0:1):q.a,OP=q=>q.tf!==undefined?['True','False']:q.o,od=q=>q.tf!==undefined?[0,1]:shuf(4);
+const KEY='istqbquest';
+function ld(){try{return JSON.parse(localStorage.getItem(KEY))||{xp:0,st:0,last:'',done:{}}}catch(e){return{xp:0,st:0,last:'',done:{}}}}
+let S=ld();function sv(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+const A=document.getElementById('app');let L=null;
+const shuf=n=>{const a=[...Array(n).keys()];for(let i=n-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+function home(){
+ let h=`<div class="top"><span>🧪 ISTQB Quest by Vito Mendoza</span><span class="stat"><span>🔥 ${S.st}</span><span>⭐ ${S.xp}</span></span></div><h1>Syllabus CTFL v4.0</h1><p class="sub">Completa cada unidad para desbloquear la siguiente.</p><button class="unit" onclick="exam()"><span class="ic">📝</span><span><b>Mock exam</b><small>${U.reduce((n,u)=>n+u.qs.length,0)} questions · timed · 65% to pass${S.ex!==undefined?' · Best: '+S.ex+'%':''}</small></span></button>`;
+ U.forEach((u,i)=>{const open=i==0||S.done[i-1]!==undefined,d=S.done[i];
+  h+=`<button class="unit ${open?'':'lock'}" ${open?`onclick="start(${i})"`:'disabled'}><span class="ic">${open?u.i:'🔒'}</span><span><b>${i+1}. ${u.t}</b><small>${d!==undefined?'Mejor: '+d+'/'+u.qs.length+' ✔':open?'Empezar':'Bloqueada'}</small></span></button>`});
+ A.innerHTML=h}
+function start(u){L={u,n:0,h:3,ok:0,sel:null,chk:false,ord:od(U[u].qs[0])};lesson()}
+function lesson(){
+ const U1=U[L.u],q=U1.qs[L.n];
+ let h=`<div class="lt"><button class="x" onclick="home()">✕</button><div class="bar"><i style="width:${L.n/U1.qs.length*100}%"></i></div><b>❤️ ${L.h}</b></div><small style="color:var(--mut);font-weight:700">${q.tf!==undefined?"TRUE OR FALSE":"CHOOSE THE ANSWER"}</small><div class="q" style="margin-top:6px">${q.q}</div>`;
+ L.ord.forEach(k=>{let c='opt';if(L.chk){if(k==AN(q))c+=' ok';else if(k==L.sel)c+=' bad'}else if(k==L.sel)c+=' sel';
+  h+=`<button class="${c}" ${L.chk?'disabled':`onclick="pick(${k})"`}>${OP(q)[k]}</button>`});
+ h+='<div class="sp"></div>';
+ if(L.chk){const g=L.sel==AN(q);h+=`<div class="fb ${g?'ok':'bad'}"><b>${g?'¡Correcto!':'Respuesta incorrecta'}</b><br>${q.e}</div><button class="btn" onclick="next()">Continuar</button>`}
+ else h+=`<button class="btn" ${L.sel===null?'disabled':''} onclick="check()">Comprobar</button>`;
+ A.innerHTML=h}
+function pick(k){L.sel=k;lesson()}
+function check(){const q=U[L.u].qs[L.n];L.chk=true;if(L.sel==AN(q))L.ok++;else L.h--;lesson()}
+function next(){
+ const U1=U[L.u];
+ if(L.h<=0){A.innerHTML=`<div class="end"><div class="big">💔</div><h1>Te quedaste sin vidas</h1><p>Repasa la unidad e inténtalo de nuevo.</p></div><button class="btn" onclick="start(${L.u})">Reintentar</button><br><br><button class="btn ghost" onclick="home()">Volver</button>`;return}
+ L.n++;
+ if(L.n>=U1.qs.length){
+  const xp=L.ok*10+(L.h==3?10:0),t=new Date().toDateString(),y=new Date(Date.now()-864e5).toDateString();
+  if(S.last!=t){S.st=S.last==y?S.st+1:1;S.last=t}
+  S.xp+=xp;S.done[L.u]=Math.max(S.done[L.u]||0,L.ok);sv();
+  A.innerHTML=`<div class="end"><div class="big">🎉</div><h1>¡Unidad completada!</h1><p>${L.ok}/${U1.qs.length} correctas · +${xp} XP · 🔥 ${S.st}</p></div><button class="btn" onclick="home()">Continuar</button>`;return}
+ L.sel=null;L.chk=false;L.ord=od(U[L.u].qs[L.n]);lesson()}
+const fmt=ms=>{const s=Math.max(0,Math.ceil(ms/1000));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
+let E=null,TI=null;
+function exam(){const all=[];U.forEach(u=>u.qs.forEach(q=>all.push(q)));
+ E={qs:shuf(all.length).map(i=>({q:all[i],ord:od(all[i])})),n:0,ans:[],sel:null,end:Date.now()+all.length*90000};
+ clearInterval(TI);TI=setInterval(tick,1000);ex()}
+function tick(){const r=E.end-Date.now(),t=document.getElementById('tm');if(t)t.textContent='⏱ '+fmt(r);if(r<=0)finExam()}
+function ex(){const it=E.qs[E.n],q=it.q;
+ let h=`<div class="lt"><button class="x" onclick="quitEx()">✕</button><div class="bar"><i style="width:${E.n/E.qs.length*100}%"></i></div><b id="tm">⏱ ${fmt(E.end-Date.now())}</b></div><small style="color:var(--mut);font-weight:700">QUESTION ${E.n+1} / ${E.qs.length}${q.tf!==undefined?' · TRUE OR FALSE':''}</small><div class="q" style="margin-top:6px">${q.q}</div>`;
+ it.ord.forEach(k=>{h+=`<button class="opt${k==E.sel?' sel':''}" onclick="E.sel=${k};ex()">${OP(q)[k]}</button>`});
+ h+=`<div class="sp"></div><button class="btn" ${E.sel===null?'disabled':''} onclick="nextEx()">${E.n+1==E.qs.length?'Finish':'Next'}</button>`;A.innerHTML=h}
+function nextEx(){E.ans.push(E.sel);E.n++;E.sel=null;if(E.n>=E.qs.length)finExam();else ex()}
+function quitEx(){clearInterval(TI);E=null;home()}
+function finExam(){clearInterval(TI);
+ if(E.sel!==null&&E.ans.length<E.qs.length)E.ans.push(E.sel);
+ const N=E.qs.length;let ok=0,wr='';
+ E.qs.forEach((it,i)=>{const q=it.q,a=E.ans[i];if(a===AN(q))ok++;else wr+=`<div class="fb bad" style="margin:0 0 10px"><b>${q.q}</b><br>Your answer: ${a==null?'—':OP(q)[a]}<br>Correct: ${OP(q)[AN(q)]}<br><i>${q.e}</i></div>`});
+ const pct=Math.round(ok/N*100),pass=pct>=65;
+ if(S.ex===undefined||pct>S.ex)S.ex=pct;S.xp+=ok*5;sv();
+ A.innerHTML=`<div class="end" style="margin:16px 0"><div class="big">${pass?'🏆':'📚'}</div><h1>${pass?'Passed!':'Not yet'}</h1><p>${ok}/${N} correct · ${pct}% · pass mark 65% · +${ok*5} XP</p></div>${wr?'<h1>Review</h1>'+wr:''}<button class="btn" onclick="home()">Continuar</button>`;E=null}
+home();
+</script></body></html>
