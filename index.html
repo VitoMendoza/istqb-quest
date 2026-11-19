@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ISTQB Quest by Vito Mendoza</title>
+<title>ISTQB Quest</title>
 <style>
 :root{--bg:#fff;--fg:#1f2937;--card:#f3f4f6;--bd:#d1d5db;--mut:#6b7280;--acc:#58a700;--accd:#3f7d00;--ok:#d7f7c0;--okf:#2b6b00;--bad:#ffdfe0;--badf:#b42318;--lock:#e5e7eb;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -76,6 +76,76 @@ const U=[
 {q:"Test execution tools can help run regression tests more efficiently.",tf:true,e:"Automated regression suites run quickly and repeatedly."},
 {q:"Continuous integration (CI) helps by running…",o:["Automated tests on every code change","Manual reviews","Yearly audits","Only UAT"],a:0,e:"It gives fast feedback on every commit."}]}
 ];
+const X=[
+{b:[
+{q:"Which test activity analyzes the test basis to determine WHAT to test and identifies test conditions?",o:["Test planning","Test analysis","Test design","Test implementation"],a:1,e:"Test analysis answers what to test; test design answers how to test."},
+{q:"Which statement best describes quality assurance (QA)?",o:["Executing tests to find failures","Focusing on adherence to proper processes to give confidence that quality will be achieved","Fixing defects found in testing","Reviewing only the final product"],a:1,e:"QA is process-oriented; testing supports QA by evaluating the product."},
+{q:"Which principle says testing should start as early as possible?",o:["Early testing saves time and money","Defects cluster together","Testing is context dependent","Tests wear out"],a:0,e:"Defects found early are cheaper to fix."},
+{q:"A product with no failures found in testing can still fail to meet user needs.",tf:true,e:"This is the absence-of-defects fallacy."}],
+c:[
+{q:"Which activity belongs to test completion?",o:["Creating a test summary report","Designing test cases","Identifying test conditions","Setting up the test environment"],a:0,e:"Completion includes the test summary report and archiving testware."},
+{q:"Creating test procedures, preparing test data and organizing test suites into an execution schedule is part of…",o:["Test analysis","Test design","Test implementation","Test monitoring"],a:2,e:"Test implementation answers: do we have everything to run the tests?"},
+{q:"Which statement about independence of testing is correct?",o:["It removes the need to communicate with developers","It brings a different view from the authors and can find different defects","It guarantees bias-free tests","It is mandatory at every test level"],a:1,e:"Independent testers have different biases and backgrounds."},
+{q:"Traceability between the test basis and test cases helps assess coverage.",tf:true,e:"Traceability supports coverage evaluation and impact analysis."}]},
+{b:[
+{q:"Test-driven development (TDD) is characterized by…",o:["Writing tests before the code they test","Writing tests after release","Testing only by end users","Replacing component tests with UAT"],a:0,e:"TDD: write a failing test, write code to pass it, refactor."},
+{q:"Which test type evaluates HOW WELL the system behaves rather than WHAT it does?",o:["Functional testing","Non-functional testing","Confirmation testing","White-box testing"],a:1,e:"Non-functional testing evaluates quality characteristics such as performance or usability."},
+{q:"Which is a benefit of the DevOps approach for testing?",o:["Eliminating manual testing","Fast feedback on code quality through CI/CD and automated tests","No need for regression tests","Testing only after deployment"],a:1,e:"CI/CD pipelines run automated tests on every change."},
+{q:"Black-box test techniques are based on the internal structure of the test object.",tf:false,e:"Black-box techniques use specifications; white-box uses structure."}],
+c:[
+{q:"Which test level focuses on the overall behavior and capabilities of an entire system?",o:["Component testing","Integration testing","System testing","Maintenance testing"],a:2,e:"System testing covers end-to-end tasks and non-functional behavior."},
+{q:"Which is a typical trigger for maintenance testing?",o:["Migration of the system to a new platform","Writing the first line of code","Creating the test plan","Selecting a test tool"],a:0,e:"Modifications, migrations and retirement trigger maintenance testing."},
+{q:"In Behavior-Driven Development (BDD), tests are typically written…",o:["In assembly language","In natural language such as Given/When/Then","Only by developers after release","As screenshots"],a:1,e:"BDD uses a readable format that all stakeholders understand."},
+{q:"In iterative development, regression testing becomes more important as the system grows.",tf:true,e:"Each increment may affect existing behavior."}]},
+{b:[
+{q:"Which review activity has each reviewer assess the work product alone and note anomalies?",o:["Planning","Review initiation","Individual review","Fixing and reporting"],a:2,e:"Individual review happens before the review meeting."},
+{q:"Which review type is typically led by the author of the work product?",o:["Inspection","Walkthrough","Technical review","Management review"],a:1,e:"Walkthroughs are author-led; inspections use a trained moderator."},
+{q:"Which is a benefit of static testing?",o:["Detecting defects in work products before dynamic testing is possible","Finding all runtime failures","Measuring response time","Replacing system testing"],a:0,e:"Static testing finds defects early, even in requirements."},
+{q:"Reviews can be applied to non-software work products such as requirements and test plans.",tf:true,e:"Any work product that can be read and understood can be reviewed."}],
+c:[
+{q:"Which review role decides what is to be reviewed and provides resources such as time?",o:["Manager","Moderator","Scribe","Author"],a:0,e:"The manager is responsible for planning resources and decisions."},
+{q:"Which is a factor for successful reviews?",o:["Reviews are used to evaluate authors","Participants have adequate time to review","Only the author reviews","Findings are kept secret"],a:1,e:"Reviews should never be used to evaluate people."},
+{q:"Which defect is easier to find with static testing than with dynamic testing?",o:["Coding standard violations","Memory leaks","Response time problems","Failures under load"],a:0,e:"Static testing finds maintainability and standards issues directly."},
+{q:"Dynamic testing requires the test object to be executed.",tf:true,e:"Dynamic testing runs the software; static testing does not."}]},
+{b:[
+{q:"Which technique derives tests from combinations of conditions and resulting actions?",o:["Decision table testing","Equivalence partitioning","Statement testing","Error guessing"],a:0,e:"Decision tables capture business rules as condition combinations."},
+{q:"State transition testing is most suitable when…",o:["The response depends on the current state and previous events","Inputs are numeric ranges","Only code structure matters","There is no documentation"],a:0,e:"It models states, events, transitions and actions."},
+{q:"Which approach designs, executes and evaluates tests at the same time, guided by a test charter?",o:["Exploratory testing","Checklist-based testing","Branch testing","Boundary value analysis"],a:0,e:"Exploratory testing is experience-based and time-boxed."},
+{q:"Branch coverage measures the percentage of branches exercised by tests.",tf:true,e:"Branch testing exercises decision outcomes in the code."}],
+c:[
+{q:"Coverage of equivalence partitioning is measured as…",o:["Partitions exercised divided by total partitions identified","Statements executed divided by total statements","Defects found divided by tests run","Branches executed divided by total branches"],a:0,e:"Coverage items are the partitions."},
+{q:"Which statement about acceptance criteria is correct?",o:["They define conditions a user story must meet to be accepted","They are written after UAT","They replace user stories","They are only for developers"],a:0,e:"Acceptance criteria clarify the scope of a user story."},
+{q:"Which technique uses a list of high-level items to check, often based on experience or standards?",o:["Checklist-based testing","Equivalence partitioning","Branch testing","Decision table testing"],a:0,e:"Checklist-based testing is experience-based."},
+{q:"White-box techniques are based on the internal structure of the test object.",tf:true,e:"Statement and branch testing are white-box techniques."}]},
+{b:[
+{q:"The level of a risk is determined by…",o:["Likelihood and impact","Cost and schedule only","Number of testers","The test tool used"],a:0,e:"Risk level combines the likelihood of an event and its impact."},
+{q:"Which estimation technique uses data from similar past projects?",o:["Metrics-based technique","Expert-based technique","Exploratory charters","Static analysis"],a:0,e:"Expert-based relies on the experience of owners of the tasks."},
+{q:"Configuration management ensures that…",o:["Test items and testware are uniquely identified, versioned and traceable","Test cases are written","Test effort is estimated","Tools are selected"],a:0,e:"It supports reproducibility and traceability."},
+{q:"Test monitoring gathers information to assess progress against the plan.",tf:true,e:"Test control then takes actions based on that information."}],
+c:[
+{q:"Which prioritization strategy orders tests by the priority of the requirements they cover?",o:["Requirements-based","Random","Alphabetical","Cheapest first"],a:0,e:"Others: risk-based and coverage-based prioritization."},
+{q:"Which is a project risk?",o:["Poor quality of the delivered software","Late delivery of the test environment","Incorrect calculations in a report","Slow response time of the product"],a:1,e:"Project risks concern schedule, resources and management."},
+{q:"Entry criteria define…",o:["Preconditions to be met before starting a test activity","When testing is complete","The defects found","Only the sequential model"],a:0,e:"In Agile this is often the Definition of Ready."},
+{q:"In Agile projects, exit criteria are often called the Definition of Done.",tf:true,e:"Definition of Done defines when work is complete."}]},
+{b:[
+{q:"Which tool category supports continuous integration and delivery?",o:["DevOps tools","Test design tools","Static analysis tools","Coverage tools"],a:0,e:"DevOps tools automate build, test and deployment pipelines."},
+{q:"Which tools measure the percentage of code executed by tests?",o:["Coverage tools","Test management tools","Collaboration tools","Defect trackers"],a:0,e:"Coverage tools belong to test execution and coverage support."},
+{q:"Which is a common reason automation efforts fail?",o:["Underestimating the effort to maintain automated tests","Having a test strategy","Choosing suitable tests to automate","Training the team"],a:0,e:"Maintenance effort is often underestimated."},
+{q:"Test automation can make test execution results more objective.",tf:true,e:"Tools apply the same checks consistently."}],
+c:[
+{q:"Static analysis tools are classified as tools that support…",o:["Static testing","Test execution","Test management","Performance testing"],a:0,e:"They analyze code or models without executing them."},
+{q:"Which tests are most suitable for automation?",o:["Regression tests run repeatedly","One-off exploratory sessions","Usability judgments","Tests of unstable requirements"],a:0,e:"Repetitive, stable tests give the best return."},
+{q:"Which tools generate load by simulating many users?",o:["Non-functional testing tools","Static analysis tools","Test management tools","Coverage tools"],a:0,e:"Performance tools support non-functional testing."},
+{q:"Open-source test tools never carry risks.",tf:false,e:"Risks include poor support, quality and uncertain future."}]}
+];
+X.forEach((x,i)=>{U[i].b=x.b;U[i].c=x.c});
+const EXM=[
+{q:"Which TWO are typical test objectives? (Select TWO)",o:["Verifying that specified requirements are fulfilled","Proving the software is defect-free","Building confidence in the level of quality","Removing the need for requirements"],m:[0,2],e:"Testing cannot prove the absence of defects."},
+{q:"Which TWO are benefits of static testing? (Select TWO)",o:["Detecting defects in requirements before coding","Measuring runtime performance","Reducing development and testing cost over the lifecycle","Finding memory leaks"],m:[0,2],e:"Performance and memory leaks need dynamic testing."},
+{q:"Which TWO are black-box test techniques? (Select TWO)",o:["Equivalence partitioning","Boundary value analysis","Statement testing","Branch testing"],m:[0,1],e:"Statement and branch testing are white-box."},
+{q:"Which TWO are product risks? (Select TWO)",o:["The system calculates wrong tax amounts","The test environment is delivered late","A poorly designed UI frustrates users","Key testers leave the project"],m:[0,2],e:"The others are project risks."},
+{q:"Which TWO are benefits of test automation? (Select TWO)",o:["Less human error in repetitive execution","Zero maintenance effort","Faster execution of repeated regression tests","Elimination of exploratory testing"],m:[0,2],e:"Automation needs maintenance and does not replace exploratory testing."}
+];
 const AN=q=>q.tf!==undefined?(q.tf?0:1):q.a,OP=q=>q.tf!==undefined?['True','False']:q.o,od=q=>q.tf!==undefined?[0,1]:shuf(4);
 const KEY='istqbquest';
 function ld(){try{return JSON.parse(localStorage.getItem(KEY))||{xp:0,st:0,last:'',done:{}}}catch(e){return{xp:0,st:0,last:'',done:{}}}}
@@ -83,13 +153,13 @@ let S=ld();function sv(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e
 const A=document.getElementById('app');let L=null;
 const shuf=n=>{const a=[...Array(n).keys()];for(let i=n-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 function home(){
- let h=`<div class="top"><span>🧪 ISTQB Quest by Vito Mendoza</span><span class="stat"><span>🔥 ${S.st}</span><span>⭐ ${S.xp}</span></span></div><h1>Syllabus CTFL v4.0</h1><p class="sub">Completa cada unidad para desbloquear la siguiente.</p><button class="unit" onclick="exam()"><span class="ic">📝</span><span><b>Mock exam</b><small>${U.reduce((n,u)=>n+u.qs.length,0)} questions · timed · 65% to pass${S.ex!==undefined?' · Best: '+S.ex+'%':''}</small></span></button>`;
+ let h=`<div class="top"><span>🧪 ISTQB Quest</span><span class="stat"><span>🔥 ${S.st}</span><span>⭐ ${S.xp}</span></span></div><h1>Syllabus CTFL v4.0</h1><p class="sub">Completa cada unidad para desbloquear la siguiente.</p><button class="unit" onclick="examIntro()"><span class="ic">📝</span><span><b>Mock exam</b><small>40 questions · timed · 65% to pass${S.ex!==undefined?' · Best: '+S.ex+'%':''}</small></span></button>`;
  U.forEach((u,i)=>{const open=i==0||S.done[i-1]!==undefined,d=S.done[i];
-  h+=`<button class="unit ${open?'':'lock'}" ${open?`onclick="start(${i})"`:'disabled'}><span class="ic">${open?u.i:'🔒'}</span><span><b>${i+1}. ${u.t}</b><small>${d!==undefined?'Mejor: '+d+'/'+u.qs.length+' ✔':open?'Empezar':'Bloqueada'}</small></span></button>`});
+  h+=`<button class="unit ${open?'':'lock'}" ${open?`onclick="start(${i})"`:'disabled'}><span class="ic">${open?u.i:'🔒'}</span><span><b>${i+1}. ${u.t}</b><small>${d!==undefined?'Mejor: '+d+'% ✔':open?'Empezar':'Bloqueada'}</small></span></button>`});
  A.innerHTML=h}
-function start(u){L={u,n:0,h:3,ok:0,sel:null,chk:false,ord:od(U[u].qs[0])};lesson()}
+function start(u){const x=U[u],G=[x.qs,x.b,x.c];S.g=S.g||{};const o=[0,1,2].filter(i=>i!=S.g[u]),gi=o[Math.floor(Math.random()*o.length)];S.g[u]=gi;sv();const qs=shuf(G[gi].length).map(i=>G[gi][i]);L={u,qs,n:0,h:3,ok:0,sel:null,chk:false,ord:od(qs[0])};lesson()}
 function lesson(){
- const U1=U[L.u],q=U1.qs[L.n];
+ const U1={qs:L.qs},q=U1.qs[L.n];
  let h=`<div class="lt"><button class="x" onclick="home()">✕</button><div class="bar"><i style="width:${L.n/U1.qs.length*100}%"></i></div><b>❤️ ${L.h}</b></div><small style="color:var(--mut);font-weight:700">${q.tf!==undefined?"TRUE OR FALSE":"CHOOSE THE ANSWER"}</small><div class="q" style="margin-top:6px">${q.q}</div>`;
  L.ord.forEach(k=>{let c='opt';if(L.chk){if(k==AN(q))c+=' ok';else if(k==L.sel)c+=' bad'}else if(k==L.sel)c+=' sel';
   h+=`<button class="${c}" ${L.chk?'disabled':`onclick="pick(${k})"`}>${OP(q)[k]}</button>`});
@@ -98,35 +168,40 @@ function lesson(){
  else h+=`<button class="btn" ${L.sel===null?'disabled':''} onclick="check()">Comprobar</button>`;
  A.innerHTML=h}
 function pick(k){L.sel=k;lesson()}
-function check(){const q=U[L.u].qs[L.n];L.chk=true;if(L.sel==AN(q))L.ok++;else L.h--;lesson()}
+function check(){const q=L.qs[L.n];L.chk=true;if(L.sel==AN(q))L.ok++;else L.h--;lesson()}
 function next(){
- const U1=U[L.u];
+ const U1={qs:L.qs};
  if(L.h<=0){A.innerHTML=`<div class="end"><div class="big">💔</div><h1>Te quedaste sin vidas</h1><p>Repasa la unidad e inténtalo de nuevo.</p></div><button class="btn" onclick="start(${L.u})">Reintentar</button><br><br><button class="btn ghost" onclick="home()">Volver</button>`;return}
  L.n++;
  if(L.n>=U1.qs.length){
   const xp=L.ok*10+(L.h==3?10:0),t=new Date().toDateString(),y=new Date(Date.now()-864e5).toDateString();
   if(S.last!=t){S.st=S.last==y?S.st+1:1;S.last=t}
-  S.xp+=xp;S.done[L.u]=Math.max(S.done[L.u]||0,L.ok);sv();
+  S.xp+=xp;S.done[L.u]=Math.max(S.done[L.u]||0,Math.round(L.ok/L.qs.length*100));sv();
   A.innerHTML=`<div class="end"><div class="big">🎉</div><h1>¡Unidad completada!</h1><p>${L.ok}/${U1.qs.length} correctas · +${xp} XP · 🔥 ${S.st}</p></div><button class="btn" onclick="home()">Continuar</button>`;return}
- L.sel=null;L.chk=false;L.ord=od(U[L.u].qs[L.n]);lesson()}
+ L.sel=null;L.chk=false;L.ord=od(L.qs[L.n]);lesson()}
 const fmt=ms=>{const s=Math.max(0,Math.ceil(ms/1000));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
 let E=null,TI=null;
-function exam(){const all=[];U.forEach(u=>u.qs.forEach(q=>all.push(q)));
- E={qs:shuf(all.length).map(i=>({q:all[i],ord:od(all[i])})),n:0,ans:[],sel:null,end:Date.now()+all.length*90000};
+function examIntro(){A.innerHTML=`<div class="lt"><button class="x" onclick="home()">✕</button></div><div class="end"><div class="big">📝</div><h1>Mock exam</h1><p>40 multiple-choice questions · 3 ask for TWO answers · 65% (26/40) to pass</p><p>The official exam lasts 60 minutes; candidates who are not native English speakers get 25% extra (75 minutes).</p></div><button class="btn" onclick="exam(60)">60 minutes · standard</button><br><br><button class="btn ghost" onclick="exam(75)">75 minutes · non-native English</button>`}
+function exam(min){const mc=[];U.forEach(u=>[u.qs,u.b,u.c].forEach(g=>g.forEach(q=>{if(q.o)mc.push({q:q.q,o:q.o,a:[q.a],e:q.e})})));
+ const ms=shuf(EXM.length).slice(0,3).map(i=>({q:EXM[i].q,o:EXM[i].o,a:EXM[i].m,e:EXM[i].e}));
+ const it=shuf(mc.length).slice(0,37).map(i=>mc[i]).concat(ms);
+ E={qs:shuf(40).map(i=>({q:it[i],ord:shuf(4)})),n:0,ans:[],sel:[],end:Date.now()+min*60000};
  clearInterval(TI);TI=setInterval(tick,1000);ex()}
 function tick(){const r=E.end-Date.now(),t=document.getElementById('tm');if(t)t.textContent='⏱ '+fmt(r);if(r<=0)finExam()}
-function ex(){const it=E.qs[E.n],q=it.q;
- let h=`<div class="lt"><button class="x" onclick="quitEx()">✕</button><div class="bar"><i style="width:${E.n/E.qs.length*100}%"></i></div><b id="tm">⏱ ${fmt(E.end-Date.now())}</b></div><small style="color:var(--mut);font-weight:700">QUESTION ${E.n+1} / ${E.qs.length}${q.tf!==undefined?' · TRUE OR FALSE':''}</small><div class="q" style="margin-top:6px">${q.q}</div>`;
- it.ord.forEach(k=>{h+=`<button class="opt${k==E.sel?' sel':''}" onclick="E.sel=${k};ex()">${OP(q)[k]}</button>`});
- h+=`<div class="sp"></div><button class="btn" ${E.sel===null?'disabled':''} onclick="nextEx()">${E.n+1==E.qs.length?'Finish':'Next'}</button>`;A.innerHTML=h}
-function nextEx(){E.ans.push(E.sel);E.n++;E.sel=null;if(E.n>=E.qs.length)finExam();else ex()}
+function ex(){const it=E.qs[E.n],q=it.q,mu=q.a.length>1;
+ let h=`<div class="lt"><button class="x" onclick="quitEx()">✕</button><div class="bar"><i style="width:${E.n/40*100}%"></i></div><b id="tm">⏱ ${fmt(E.end-Date.now())}</b></div><small style="color:var(--mut);font-weight:700">QUESTION ${E.n+1} / 40${mu?' · SELECT TWO':''}</small><div class="q" style="margin-top:6px">${q.q}</div>`;
+ it.ord.forEach(k=>{h+=`<button class="opt${E.sel.includes(k)?' sel':''}" onclick="pickE(${k})">${q.o[k]}</button>`});
+ h+=`<div class="sp"></div><button class="btn" ${E.sel.length!=q.a.length?'disabled':''} onclick="nextEx()">${E.n==39?'Finish':'Next'}</button>`;A.innerHTML=h}
+function pickE(k){const m=E.qs[E.n].q.a.length>1,i=E.sel.indexOf(k);if(m){if(i>=0)E.sel.splice(i,1);else if(E.sel.length<2)E.sel.push(k)}else E.sel=[k];ex()}
+function nextEx(){E.ans.push(E.sel);E.n++;E.sel=[];if(E.n>=40)finExam();else ex()}
 function quitEx(){clearInterval(TI);E=null;home()}
 function finExam(){clearInterval(TI);
- if(E.sel!==null&&E.ans.length<E.qs.length)E.ans.push(E.sel);
- const N=E.qs.length;let ok=0,wr='';
- E.qs.forEach((it,i)=>{const q=it.q,a=E.ans[i];if(a===AN(q))ok++;else wr+=`<div class="fb bad" style="margin:0 0 10px"><b>${q.q}</b><br>Your answer: ${a==null?'—':OP(q)[a]}<br>Correct: ${OP(q)[AN(q)]}<br><i>${q.e}</i></div>`});
- const pct=Math.round(ok/N*100),pass=pct>=65;
+ if(E.sel.length&&E.ans.length<40)E.ans.push(E.sel);
+ let ok=0,wr='';const J=(q,a)=>a.map(k=>q.o[k]).join('; ')||'—';
+ E.qs.forEach((it,i)=>{const q=it.q,a=E.ans[i]||[];if(a.length==q.a.length&&q.a.every(k=>a.includes(k)))ok++;else wr+=`<div class="fb bad" style="margin:0 0 10px"><b>${q.q}</b><br>Your answer: ${J(q,a)}<br>Correct: ${J(q,q.a)}<br><i>${q.e}</i></div>`});
+ const pct=Math.round(ok/40*100),pass=ok>=26;
  if(S.ex===undefined||pct>S.ex)S.ex=pct;S.xp+=ok*5;sv();
- A.innerHTML=`<div class="end" style="margin:16px 0"><div class="big">${pass?'🏆':'📚'}</div><h1>${pass?'Passed!':'Not yet'}</h1><p>${ok}/${N} correct · ${pct}% · pass mark 65% · +${ok*5} XP</p></div>${wr?'<h1>Review</h1>'+wr:''}<button class="btn" onclick="home()">Continuar</button>`;E=null}
+ A.innerHTML=`<div class="end" style="margin:16px 0"><div class="big">${pass?'🏆':'📚'}</div><h1>${pass?'Passed!':'Not yet'}</h1><p>${ok}/40 correct · ${pct}% · pass mark 65% · +${ok*5} XP</p></div>${wr?'<h1>Review</h1>'+wr:''}<button class="btn" onclick="home()">Continuar</button>`;E=null}
+
 home();
 </script></body></html>
