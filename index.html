@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ISTQB Quest</title>
+<title>ISTQB Quest by Vito Mendoza</title>
 <style>
 :root{--bg:#fff;--fg:#1f2937;--card:#f3f4f6;--bd:#d1d5db;--mut:#6b7280;--acc:#58a700;--accd:#3f7d00;--ok:#d7f7c0;--okf:#2b6b00;--bad:#ffdfe0;--badf:#b42318;--lock:#e5e7eb;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -153,7 +153,7 @@ let S=ld();function sv(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e
 const A=document.getElementById('app');let L=null;
 const shuf=n=>{const a=[...Array(n).keys()];for(let i=n-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 function home(){
- let h=`<div class="top"><span>🧪 ISTQB Quest</span><span class="stat"><span>🔥 ${S.st}</span><span>⭐ ${S.xp}</span></span></div><h1>Syllabus CTFL v4.0</h1><p class="sub">Completa cada unidad para desbloquear la siguiente.</p><button class="unit" onclick="examIntro()"><span class="ic">📝</span><span><b>Mock exam</b><small>40 questions · timed · 65% to pass${S.ex!==undefined?' · Best: '+S.ex+'%':''}</small></span></button>`;
+ let h=`<div class="top"><span>🧪 ISTQB Quest by Vito Mendoza</span><span class="stat"><span>🔥 ${S.st}</span><span>⭐ ${S.xp}</span></span></div><h1>Syllabus CTFL v4.0</h1><p class="sub">Completa cada unidad para desbloquear la siguiente.</p><button class="unit" onclick="examIntro()"><span class="ic">📝</span><span><b>Mock exam</b><small>40 questions · timed · 65% to pass${S.ex!==undefined?' · Best: '+S.ex+'%':''}</small></span></button>`;
  U.forEach((u,i)=>{const open=i==0||S.done[i-1]!==undefined,d=S.done[i];
   h+=`<button class="unit ${open?'':'lock'}" ${open?`onclick="start(${i})"`:'disabled'}><span class="ic">${open?u.i:'🔒'}</span><span><b>${i+1}. ${u.t}</b><small>${d!==undefined?'Mejor: '+d+'% ✔':open?'Empezar':'Bloqueada'}</small></span></button>`});
  A.innerHTML=h}
